@@ -14,7 +14,7 @@ Code repository for my master's degree dissertation about applying hyperbolic-ba
 to do
 ```
 
-Contact the author: chriiscardozo@gmail.com
+Contact the author: chriiscardozo at gmail.com
 
 ## Dissertation's Abstract
 
