@@ -139,7 +139,7 @@ This is useful specially if we are using spot instances in AWS.
 * * * * * /msc_aafgan/Main/startup_aws.sh >> /tmp/cron.log 2>&1
 ```
 
-##### 5. The rsync to validation host optional)
+##### 5. The rsync to validation host (optional)
 
 Save the script below and execute it to keep local and experiment machine code in sync without need to commit. It is helpful for testing purposes.
 
