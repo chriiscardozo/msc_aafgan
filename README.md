@@ -2,16 +2,25 @@
 
 Code repository for my master's degree dissertation about applying hyperbolic-based adptive activation functions in GANs (Generative Adversarial Nets). Master dregree granted by [PESC/COPPE](https://www.cos.ufrj.br/) at the Federal University of Rio de Janeiro ([UFRJ](http://ufrj.br/)).
 
+Full text available at: [to be added later]
+
+
 ## Proposals
 
 - AAF-GAN: GAN architecture using adaptive activation functions. We validate the new architecture by applying activation functions based on the hyperbolic penalization method.
 - MiDA: a novel adaptive activation function using an adaptive symmetric bi-hyperbolic (BHSA) activation function to apply self-gating property by replacing the *tanh* in the oringal Mish non-adaptive function.
 - BHANA: matematical proposal for normalize the adaptive asymmetric bi-hyperbolic (BHAA) activation function and solve the range limits problem.
 
-## Cite this work
+## Cite this work / Contact the author
 
 ```
-to do
+@phdthesis{christian_aafgan_2021,
+    title = {AAF-GAN: Aplicação de Funções de Ativação Hiperbólicas Adaptativas em Redes Neurais Adversárias Generativas},
+    year = {2021},
+    author = {Cardozo, Christian da Silva Cabral},
+    school = {PESC/COPPE - Universidade Federal do Rio de Janeiro},
+    type = {{MSc} dissertation}
+}
 ```
 
 Contact the author: chriiscardozo at gmail.com
@@ -24,7 +33,7 @@ In this work, we propose a new approach to GANs networks by applying adaptive ac
 
 ---
 
-## Setup
+## Experiments setup
 
 This section describes how to setup your environment to run this code. The procedures below are based on the usage of AWS EC2 instances, but in general the steps can adapted for your personal use case.
 
