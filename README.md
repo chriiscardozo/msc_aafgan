@@ -14,6 +14,8 @@ Code repository for my master's degree dissertation about applying hyperbolic-ba
 to do
 ```
 
+Contact the author: chriiscardozo@gmail.com
+
 ## Dissertation's Abstract
 
 Generative adversarial networks (GANs) are a generative model architecture proposed a few years ago where two neural networks train against each other. The generator network tries to produce samples similar to real data with no direct contact with them, and the discriminator network attempts to maximize the accuracy of predicting which data is fake generated and legit from the dataset. Adaptive activation functions are an approach yet not explored in GANs that could improve their performance. Specifically, functions based on the hyperbolic penalization technique indicate that convergence can be improved in the multi-layer network's training's early epochs.
