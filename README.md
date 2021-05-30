@@ -15,7 +15,7 @@ Full text available at: [to be added later]
 
 ```
 @phdthesis{christian_aafgan_2021,
-    title = {AAF-GAN: Aplicação de Funções de Ativação Hiperbólicas Adaptativas em Redes Neurais Adversárias Generativas},
+    title = {AAF-GAN: Hyperbolic adaptive activation functions applied to Generative Adversarial Networks},
     year = {2021},
     author = {Cardozo, Christian da Silva Cabral},
     school = {PESC/COPPE - Universidade Federal do Rio de Janeiro},
