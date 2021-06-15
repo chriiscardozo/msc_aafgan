@@ -2,7 +2,7 @@
 
 Code repository for my master's degree dissertation about applying hyperbolic-based adptive activation functions in GANs (Generative Adversarial Nets). Master dregree granted by [PESC/COPPE](https://www.cos.ufrj.br/) at the Federal University of Rio de Janeiro ([UFRJ](http://ufrj.br/)).
 
-Full text available at: [to be added later]
+Full text available at: https://www.cos.ufrj.br/index.php/pt-BR/publicacoes-pesquisa/details/15/2992
 
 
 ## Proposals
