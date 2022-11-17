@@ -8,11 +8,11 @@ def step():
     z = np.arange(-5, 5, .001)
     step_fn = np.vectorize(lambda z: 1.0 if z >= 0.0 else 0.0)
     step = step_fn(z)
-    return z, step, "Função degrau"
+    return z, step, "Step function"
 
 def step_d():
     z = np.arange(-5, 5, .02)
-    return z, [0]*len(z), "Derivada da função degrau"
+    return z, [0]*len(z), "Step function derivative"
 
 
 ########## Função logística
@@ -20,13 +20,13 @@ def logistic():
     z = np.arange(-10, 10, .1)
     sigma_fn = np.vectorize(lambda z: 1/(1+np.exp(-z)))
     sigma = sigma_fn(z)
-    return z, sigma, "Função logística"
+    return z, sigma, "Logistic function"
 
 def logistic_d():
     z = np.arange(-10, 10, .1)
     sigma_fn = np.vectorize(lambda z: np.exp(-z)/((np.exp(-z) + 1)**2))
     sigma = sigma_fn(z)
-    return z, sigma, "Derivada da função logística"
+    return z, sigma, "Logistic derivative"
 
 
 ########## Função ReLU
@@ -34,50 +34,50 @@ def relu():
     z = np.arange(-2, 2, .01)
     zero = np.zeros(len(z))
     y = np.max([zero, z], axis=0)
-    return z, y, "Função ReLU"
+    return z, y, "ReLU function"
 
 def relu_d():
     z = np.arange(-2, 2, .01)
     y = [1 if x > 0 else 0 for x in z]
-    return z, y, "Derivada da função ReLU"
+    return z, y, "ReLU derivative"
 
 
 ########## Função LeakyReLU
 def lrelu(alpha=.2):
     z = np.arange(-2, 2, .01)
     y = [x if x > 0 else alpha*x for x in z]
-    return z, y, "Função LeakyReLU (α = 0.2)"
+    return z, y, "LeakyReLU function (α = 0.2)"
 
 def lrelu_d(alpha=.2):
     z = np.arange(-2, 2, .01)
     y = [1 if x > 0 else alpha for x in z]
-    return z, y, "Derivada da função LeakyReLU (α = 0.2)"
+    return z, y, "LeakyReLU derivative (α = 0.2)"
 
 
 ########## Função tangente hiperbólica
 def tanh():
     z = np.arange(-5, 5, .1)
     t = np.tanh(z)
-    return z, t, "Função tangente hiperbólica"
+    return z, t, "Hyperbolic tangent function"
 
 def tanh_d():
     z = np.arange(-5, 5, .1)
     # sech(z) = 1 / cosh(z)
     t = 1/np.cosh(z)
-    return z, t, "Derivada da função tangente hiperbólica"
+    return z, t, "Hyperbolic tangent derivative"
 
 ########## Função tangente hiperbólica
 def mish():
     z = np.arange(-5, 5, .1)
     t = z * np.tanh(np.log(1 + np.exp(z)))
-    return z, t, "Função Mish"
+    return z, t, "Mish function"
 
 def mish_d():
     z = np.arange(-5, 5, .1)
     t = ((2*np.exp(z)*z*(1+np.exp(z)))/((1+np.exp(z))**2+1)) - \
             (2*np.exp(z)*z*((1+np.exp(z))**2 - 1)*(1+np.exp(z)))/((1+np.exp(z))**2 + 1)**2 + \
                 ((1+np.exp(z))**2 - 1)/((1+np.exp(z))**2 + 1)
-    return z, t, "Derivada da função Mish"
+    return z, t, "Mish derivative"
 
 ########## Função APL
 def apl_func(x,a,b):
@@ -86,23 +86,23 @@ def apl_func(x,a,b):
 def apl(a=[.2], b=[0]):
     z = np.arange(-5, 5, .01)
     t = [apl_func(x,a,b) for x in z]
-    return z, t, "Função APL (a = " + a + "; b = " + b + ")"
+    return z, t, "APL function (a = " + a + "; b = " + b + ")"
 
 def apl_d_a02_b0():
     z = np.arange(-5, 5, .01)
     t = [1 if x > 0 else -0.2 for x in z]
-    return z, t, "Derivada da função APL (a = 0.2; b = 0)"
+    return z, t, "APL derivative (a = 0.2; b = 0)"
 
 ########## Função SHReLU
 def shrelu(tau=0.2):
     z = np.arange(-5, 5, .01)
     t = [0.5*(x + np.sqrt(x**2 + tau**2)) for x in z]
-    return z, t, "Função SHReLU (τ = %.2f)" % (tau)
+    return z, t, "SH-ReLU function (τ = %.2f)" % (tau)
 
 def shrelu_d(tau=0.2):
     z = np.arange(-5, 5, .01)
     t = [0.5*((x/(np.sqrt(x**2 + tau**2))) + 1) for x in z]
-    return z, t, "Derivada da função SHReLU (τ = %.2f)" % (tau)
+    return z, t, "SH-ReLU derivative (τ = %.2f)" % (tau)
 
 ########## Função BHSA
 def h1_bhsa(l, tau, z):
@@ -116,29 +116,29 @@ def bhsa(l=1, tau=0, z = None):
     # h2 = torch.sqrt( ((self.l**2) * (x - (1/(2*self.l)))**2) + self.t2**2 )
     if z is None: z = np.arange(-5, 5, .01)
     t = h1_bhsa(l, tau, z) - h2_bhsa(l, tau, z)
-    return z, t, "Função BHSA (λ = %.2f; τ = %.2f)" % (l, tau)
+    return z, t, "BHSA function (λ = %.2f; τ = %.2f)" % (l, tau)
 
 def bhsa_d(l=1, tau=0):
     z = np.arange(-5, 5, .01)
     t = (l * (1 - 2 * l * z))/np.sqrt(4 * tau**2 + (1 - 2 * l * z)**2) + (l * (1 + 2 * l * z))/np.sqrt(4 * tau**2 + (1 + 2 * l * z)**2)
-    return z, t, "Derivada da função BHSA (λ = %.2f; τ = %.2f)" % (l, tau)
+    return z, t, "BHSA derivative (λ = %.2f; τ = %.2f)" % (l, tau)
 
 ########## Função BHAA
 def bhaa(l=1, tau1=0, tau2=0):
     z = np.arange(-5, 5, .01)
     t = np.sqrt((l**2) * (z+(1/(2*l)))**2 + (tau1**2)) - np.sqrt((l**2) * (z-(1/(2*l)))**2 + (tau2**2))
-    return z, t, "Função BHAA (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
+    return z, t, "BHAA function (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
 
 def bhaa_d(l=1, tau1=0, tau2=0):
     z = np.arange(-5, 5, .01)
     t = (l * (1 - 2 * l * z))/np.sqrt((1 - 2 * l * z)**2 + 4 * tau2**2) + (l * (2 * l * z + 1))/np.sqrt((2 * l * z + 1)**2 + 4 * tau1**2)
-    return z, t, "Derivada da função BHAA (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
+    return z, t, "BHAA derivative (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
 
 def bhata(l=1,tau1=0,tau2=0):
     z, t, _ = bhaa(l, tau1, tau2)
     t[t > 1] = 1
     t[t < -1] = -1
-    return z, t, "Função BHAA truncada (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
+    return z, t, "BHAA truncated function (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
 
 def func_bh_derivative_equal_to_zero(tau1, tau2, l):
     return [(tau1 - tau2)/(2*l*(tau1 + tau2)), (tau1 + tau2)/(2*l*(tau1 - tau2))]
@@ -163,7 +163,7 @@ def bhana(l=1,tau1=0,tau2=0):
 
     result = (result - 0.5) * 2
 
-    return z, result, "Função BHANA (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
+    return z, result, "BHANA function (λ = %.2f; τ1 = %.2f; τ2 = %.2f)" % (l, tau1, tau2)
 
 ########## Função MiDA
 def raw_softmax(x):
@@ -172,13 +172,13 @@ def raw_softmax(x):
 def mida(l=1, tau=1):
     z = np.arange(-5, 5, .01)
     t = z * bhsa(l,tau,raw_softmax(z))[1]
-    return z, t, "Função MiDA (λ = %.2f; τ = %.2f)" % (l, tau)
+    return z, t, "MiDA function (λ = %.2f; τ = %.2f)" % (l, tau)
 
 def mida_d(l=1, tau=1):
     z = np.arange(-5, 5, .01)
     delta = (l*np.exp(z)*z)/(2*(1+np.exp(z)))
     t = bhsa(l, tau, raw_softmax(z))[1] + delta * (((1 + 2*l*raw_softmax(z))/h1_bhsa(l, tau, raw_softmax(z))) + ((1-2*l*raw_softmax(z))/(h2_bhsa(l, tau, raw_softmax(z)))))
-    return z, t, "Derivada da função MiDA (λ = %.2f; τ = %.2f)" % (l, tau)
+    return z, t, "MiDA derivative (λ = %.2f; τ = %.2f)" % (l, tau)
 
 #############################################################
 def conf(ax, xlim=2, ylim=None, offsetx=0, offsety=0):
@@ -310,6 +310,6 @@ def bhana_only():
 # shrelu_and_derivative()
 # bhsa_and_derivative()
 # bhaa_and_derivative()
-# mida_and_derivative()
-# bhata_only()
+mida_and_derivative()
+bhata_only()
 bhana_only()
